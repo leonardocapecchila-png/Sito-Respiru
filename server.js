@@ -55,8 +55,10 @@ const server = http.createServer((request, response) => {
           return;
         }
 
-        response.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
-        response.end(JSON.stringify({ status: "ok", message: "Richiesta ricevuta." }));
+        response.writeHead(303, {
+          "Location": "/thank-you.html",
+        });
+        response.end();
       });
     });
     return;
