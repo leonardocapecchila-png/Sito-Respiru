@@ -59,3 +59,35 @@ const countObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.7 });
 
 counters.forEach((counter) => countObserver.observe(counter));
+
+const demoForm = document.querySelector('.demo-form');
+const formStatus = document.querySelector('.form-status');
+
+if (demoForm && formStatus) {
+  demoForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    formStatus.textContent = 'Invio in corso...';
+
+    const formData = new FormData(demoForm);
+    const payload = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch(demoForm.action, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error('Errore di invio');
+      }
+
+      formStatus.textContent = 'Richiesta inviata con successo. Ti risponderemo presto.';
+      demoForm.reset();
+    } catch (error) {
+      formStatus.textContent = 'Si è verificato un errore. Riprova tra poco.';
+    }
+  });
+}
