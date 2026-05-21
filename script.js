@@ -60,3 +60,41 @@ const countObserver = new IntersectionObserver((entries) => {
 
 counters.forEach((counter) => countObserver.observe(counter));
 
+const demoForm = document.querySelector('.demo-form');
+const formStatus = document.querySelector('.form-status');
+
+if (demoForm && formStatus) {
+  demoForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    formStatus.textContent = 'Invio in corso...';
+
+    const formData = new FormData(demoForm);
+    const body = new URLSearchParams(formData);
+
+    try {
+      const response = await fetch(demoForm.action, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json',
+        },
+        body: body.toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error('Errore di invio');
+      }
+
+      const result = await response.json();
+      if (!result.success) {
+        throw new Error(result.message || 'Errore di invio');
+      }
+
+      window.location.href = '/thank-you.html';
+    } catch (error) {
+      formStatus.textContent = 'Si è verificato un errore. Riprova tra poco.';
+    }
+  });
+}
+
+
