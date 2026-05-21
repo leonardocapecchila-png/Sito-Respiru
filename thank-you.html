@@ -7,11 +7,24 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="section-band" style="padding: 120px 16px; max-width: 720px; margin: 0 auto;">
-    <section class="proof reveal" style="background: rgba(253,248,240,0.94); border-radius: 18px; padding: 48px; box-shadow: 0 24px 70px rgba(23,39,45,0.12);">
-      <h1 style="margin:0 0 20px; font-size: clamp(2.2rem, 4vw, 3rem); color: var(--blue);">Grazie per la tua richiesta.</h1>
-      <p style="margin:0 0 28px; color: var(--muted); font-size:1.05rem; line-height:1.7;">Abbiamo ricevuto la tua demo. Ti contatteremo al più presto all’indirizzo indicato.</p>
-      <a class="button secondary" href="index.html">Torna al sito</a>
+  <header class="site-header" style="position: relative; top: 0; transform: none; width: 100%; max-width: 100%; border-radius: 0; background: rgba(253,248,240,0.92); border: none; box-shadow: 0 2px 8px rgba(23,39,45,0.08); padding: 16px; z-index: 10;">
+    <a class="brand" href="/" style="margin-left: 0;">
+      <img class="brand-mark" src="logo.svg" alt="Logo Respiru">
+      <span>Respiru</span>
+    </a>
+  </header>
+
+  <main style="display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 80px); padding: 32px 16px;">
+    <section style="max-width: 600px; text-align: center;">
+      <div style="margin-bottom: 48px;">
+        <p style="color: var(--peach); font-size: 0.76rem; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 16px;">Richiesta ricevuta</p>
+        <h1 style="margin: 0 0 18px; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1; color: var(--blue);">Grazie per la tua richiesta.</h1>
+        <p style="margin: 0 0 28px; color: var(--muted); font-size: 1.08rem; line-height: 1.7; max-width: 520px; margin-left: auto; margin-right: auto;">Abbiamo ricevuto i tuoi dati. Il nostro team ti contatterà al più presto all'email e al telefono indicati per confermare la demo.</p>
+      </div>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a class="button primary" href="/">Torna alla home</a>
+        <a class="button secondary" href="/#demo">Altre domande?</a>
+      </div>
     </section>
   </main>
 </body>
