@@ -921,16 +921,27 @@ h3 {
 }
 
 .site-footer {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   background: var(--peach);
-  color: var(--ink);
-  padding: 64px 0 80px;
+  color: #fff;
+  padding: 72px 24px 90px;
+  border-radius: 32px 32px 0 0;
 }
 
 .site-footer .section-heading,
 .site-footer .eyebrow,
-.site-footer h2,
-.site-footer p {
-  color: var(--ink);
+.site-footer p,
+.site-footer a {
+  color: #fff;
+}
+
+.site-footer h2 {
+  color: var(--blue);
 }
 
 .footer-grid {
@@ -947,7 +958,7 @@ h3 {
 
 .footer-contact a {
   display: inline-flex;
-  color: var(--ink);
+  color: #fff;
   text-decoration: underline;
 }
 
