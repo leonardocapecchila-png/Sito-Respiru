@@ -93,4 +93,14 @@ if (demoForm && formStatus) {
   });
 }
 
+const faqButtons = document.querySelectorAll('.faq-question');
+
+faqButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const item = button.closest('.faq-item');
+    if (!item) return;
+    item.classList.toggle('active');
+  });
+});
+
 
