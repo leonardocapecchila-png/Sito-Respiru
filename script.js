@@ -81,12 +81,8 @@ if (demoForm && formStatus) {
         body: body.toString(),
       });
 
-      if (!response.ok) {
-        throw new Error('Errore di invio');
-      }
-
       const result = await response.json();
-      if (!result.success) {
+      if (!response.ok || !result.success) {
         throw new Error(result.message || 'Errore di invio');
       }
 

@@ -224,8 +224,9 @@
           <h2>Prenota una demo di Respiru.</h2>
           <p>In pochi minuti capiamo com'è organizzato il tuo locale e ti mostriamo come Respiru può togliere caos dalla gestione quotidiana.</p>
         </div>
-        <form class="demo-form" action="/api/submit-demo" method="post">
+        <form class="demo-form" action="https://formsubmit.co/ajax/leonardo.capecchi.la@gmail.com" method="post">
           <input type="hidden" name="_subject" value="Richiesta demo Respiru">
+          <input type="hidden" name="_captcha" value="false">
           <label>
             Nome locale
             <input type="text" name="locale" placeholder="Es. Trattoria del Centro" required>
@@ -248,6 +249,7 @@
             </select>
           </label>
           <button class="button primary" type="submit">Richiedi demo</button>
+          <div class="form-status" aria-live="polite"></div>
         </form>
       </div>
     </section>
