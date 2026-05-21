@@ -921,8 +921,16 @@ h3 {
 }
 
 .site-footer {
-  border-top: 1px solid rgba(38, 70, 83, 0.12);
+  background: var(--peach);
+  color: var(--ink);
   padding: 64px 0 80px;
+}
+
+.site-footer .section-heading,
+.site-footer .eyebrow,
+.site-footer h2,
+.site-footer p {
+  color: var(--ink);
 }
 
 .footer-grid {
@@ -939,7 +947,8 @@ h3 {
 
 .footer-contact a {
   display: inline-flex;
-  color: var(--blue);
+  color: var(--ink);
+  text-decoration: underline;
 }
 
 .footer-contact .button {
