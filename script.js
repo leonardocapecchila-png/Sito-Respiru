@@ -103,4 +103,25 @@ faqButtons.forEach((button) => {
   });
 });
 
+const pricingToggleButtons = document.querySelectorAll('.pricing-toggle-btn');
+const pricingValues = document.querySelectorAll('.pricing-value');
+const pricingPeriods = document.querySelectorAll('.pricing-period');
+
+pricingToggleButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const billing = button.dataset.billing;
+
+    pricingToggleButtons.forEach((btn) => btn.classList.toggle('is-active', btn === button));
+
+    pricingValues.forEach((el) => {
+      const value = billing === 'year' ? el.dataset.priceYear : el.dataset.priceMonth;
+      el.textContent = `€${value}`;
+    });
+
+    pricingPeriods.forEach((el) => {
+      el.textContent = billing === 'year' ? el.dataset.periodYear : el.dataset.periodMonth;
+    });
+  });
+});
+
 
