@@ -89,11 +89,10 @@ select {
   font-weight: 850;
 }
 
-.brand-mark {
-  width: 36px;
-  height: 36px;
+.brand-mark-full {
   display: block;
-  object-fit: contain;
+  height: 42px;
+  width: auto;
 }
 
 .site-nav {
@@ -628,39 +627,11 @@ h3 {
   z-index: 1;
 }
 
-.brand-moment-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 74px;
-  height: 74px;
-  margin: 0 auto 20px;
-  border-radius: 50%;
-  background: rgba(253, 248, 240, 0.06);
-  border: 1px solid rgba(233, 196, 106, 0.3);
-  transition-delay: 0ms;
-}
-
-.brand-moment-mark img {
-  width: 34px;
-  height: auto;
-}
-
-.brand-moment-name {
-  margin: 0 0 10px;
-  color: var(--white);
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-weight: 850;
-  letter-spacing: 0.14em;
-  transition-delay: 120ms;
-}
-
-.brand-moment-tagline {
-  margin: 0;
-  color: var(--sun);
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  font-weight: 700;
-  transition-delay: 240ms;
+.brand-moment-logo {
+  display: block;
+  height: clamp(60px, 9vw, 110px);
+  width: auto;
+  margin: 0 auto;
 }
 
 .problem,
