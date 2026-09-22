@@ -3,9 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Respiru | Il gestionale che fa respirare il tuo locale</title>
-  <meta name="description" content="Respiru è il sistema operativo semplice e completo per ristoranti, bar e horeca: cassa, magazzino, sprechi, menu, prenotazioni, finanze e AI in un unico posto.">
+  <title>Respiru | Il valore nasce dalle connessioni</title>
+  <meta name="description" content="Respiru collega cassa, magazzino, ricette, sprechi, costi e prenotazioni del tuo ristorante. Il magazzino si aggiorna mentre lavori: niente più conteggi a mano.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://respiru.it/">
+
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#264653">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Respiru">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://respiru.it/">
+  <meta property="og:title" content="Respiru | Il valore nasce dalle connessioni">
+  <meta property="og:description" content="Il magazzino che si aggiorna mentre lavori. Respiru collega cassa, ricette, scorte, costi e prenotazioni in un unico sistema.">
+  <meta property="og:image" content="https://respiru.it/assets/screenshots/respiru-dashboard-desktop.png">
+  <meta property="og:image:width" content="2871">
+  <meta property="og:image:height" content="1514">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Respiru | Il valore nasce dalle connessioni">
+  <meta name="twitter:description" content="Il magazzino che si aggiorna mentre lavori. Respiru collega cassa, ricette, scorte, costi e prenotazioni in un unico sistema.">
+  <meta name="twitter:image" content="https://respiru.it/assets/screenshots/respiru-dashboard-desktop.png">
+
   <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Respiru",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://respiru.it/",
+    "description": "Respiru collega cassa, magazzino, ricette, sprechi, costi e prenotazioni del tuo ristorante in un unico sistema.",
+    "offers": {
+      "@type": "Offer",
+      "price": "99",
+      "priceCurrency": "EUR",
+      "priceValidUntil": "2027-12-31",
+      "url": "https://respiru.it/#prezzi"
+    }
+  }
+  </script>
 </head>
 <body>
   <header class="site-header" data-header>
@@ -19,7 +59,8 @@
     </button>
     <nav class="site-nav" data-nav>
       <a href="#problema">Perché</a>
-      <a href="#connessioni">Connessioni</a>
+      <a href="#magazzino">Magazzino</a>
+      <a href="#stories">Stories</a>
       <a href="#prezzi">Prezzi</a>
       <a href="#demo" class="nav-cta">Prenota demo</a>
     </nav>
@@ -34,7 +75,7 @@
         <p class="hero-modules" aria-label="Aree collegate da Respiru">Cassa <span aria-hidden="true">·</span> Magazzino <span aria-hidden="true">·</span> Sprechi <span aria-hidden="true">·</span> Menu <span aria-hidden="true">·</span> Prenotazioni <span aria-hidden="true">·</span> Finanze <span aria-hidden="true">·</span> AI</p>
         <div class="hero-actions">
           <a class="button primary" href="#demo">Richiedi una demo</a>
-          <a class="button secondary" href="#connessioni">Vedi come funziona</a>
+          <a class="button secondary" href="#magazzino">Vedi come funziona</a>
         </div>
         <div class="trust-strip" aria-label="Punti di fiducia">
           <span>Per ristoranti, bar e horeca</span>
@@ -109,6 +150,16 @@
       </div>
     </section>
 
+    <section class="brand-moment" aria-label="Respiru: il valore nasce dalle connessioni">
+      <div class="brand-moment-inner">
+        <span class="brand-moment-mark reveal" aria-hidden="true">
+          <img src="logo.svg" alt="" width="48" height="50" loading="lazy">
+        </span>
+        <p class="brand-moment-name reveal">RESPIRU</p>
+        <p class="brand-moment-tagline reveal">Il valore nasce dalle connessioni.</p>
+      </div>
+    </section>
+
     <section class="problem section-narrow" id="problema">
       <div class="section-heading centered reveal">
         <p class="eyebrow">Il problema non è lavorare tanto</p>
@@ -129,73 +180,98 @@
       </div>
     </section>
 
-    <section class="connections section-band" id="connessioni">
+    <section class="connections section-band" id="magazzino">
       <div class="section-heading centered reveal">
-        <p class="eyebrow">Non un elenco di funzioni</p>
-        <h2>Un'azione. Tutto il sistema reagisce.</h2>
-        <p>Respiru non si limita a raccogliere dati: li collega. Guarda cosa succede, in automatico, quando un cliente ordina un piatto.</p>
+        <p class="eyebrow">Il cavallo di battaglia di Respiru</p>
+        <h2>Il magazzino che si aggiorna mentre lavori.</h2>
+        <p>Vendi un piatto. Respiru conosce la ricetta. Gli ingredienti vengono scalati. Le scorte si aggiornano. Tu gestisci il locale — Respiru tiene insieme ciò che succede.</p>
       </div>
 
-      <ol class="chain" aria-label="Come un ordine attraversa il sistema Respiru">
+      <ol class="chain" aria-label="Come una comanda aggiorna il magazzino in automatico">
         <li class="chain-node reveal">
           <span class="chain-dot" aria-hidden="true"></span>
           <div class="chain-text">
-            <strong>Cliente ordina una carbonara</strong>
-            <span>Un ordine in sala, come sempre.</span>
+            <strong>Comanda</strong>
+            <span>Un piatto ordinato, come sempre.</span>
           </div>
         </li>
         <li class="chain-node reveal">
           <span class="chain-dot" aria-hidden="true"></span>
           <div class="chain-text">
-            <strong>Vendita registrata</strong>
-            <span>La cassa segna l'incasso in tempo reale.</span>
+            <strong>Ricetta</strong>
+            <span>Respiru sa già cosa serve per farlo.</span>
           </div>
         </li>
         <li class="chain-node reveal">
           <span class="chain-dot" aria-hidden="true"></span>
           <div class="chain-text">
-            <strong>Ricetta associata</strong>
-            <span>Respiru sa già cosa serve per fare quel piatto.</span>
+            <strong>Ingredienti</strong>
+            <span>Le quantità vengono scalate in automatico.</span>
           </div>
         </li>
         <li class="chain-node reveal">
           <span class="chain-dot" aria-hidden="true"></span>
           <div class="chain-text">
-            <strong>Consumo teorico degli ingredienti</strong>
-            <span>Uova, guanciale, pecorino: calcolati da soli.</span>
+            <strong>Magazzino</strong>
+            <span>Le scorte si aggiornano da sole, mentre lavori.</span>
           </div>
         </li>
         <li class="chain-node reveal">
           <span class="chain-dot" aria-hidden="true"></span>
           <div class="chain-text">
-            <strong>Magazzino aggiornato</strong>
-            <span>Le scorte si muovono senza inserimenti manuali.</span>
+            <strong>Food cost</strong>
+            <span>Il costo del piatto resta sempre sotto controllo.</span>
           </div>
         </li>
-        <li class="chain-node reveal">
-          <span class="chain-dot" aria-hidden="true"></span>
-          <div class="chain-text">
-            <strong>Food cost del piatto</strong>
-            <span>Il costo reale è sempre sotto controllo, piatto per piatto.</span>
-          </div>
-        </li>
-        <li class="chain-node reveal">
+        <li class="chain-node chain-final reveal">
           <span class="chain-dot" aria-hidden="true"></span>
           <div class="chain-text">
             <strong>Margine</strong>
             <span>Sai subito cosa resta, non a fine mese.</span>
           </div>
         </li>
-        <li class="chain-node chain-final reveal">
-          <span class="chain-dot" aria-hidden="true"></span>
-          <div class="chain-text">
-            <strong>Analytics</strong>
-            <span>Un dato in più su cui decidere il passo successivo.</span>
-          </div>
-        </li>
       </ol>
 
-      <p class="connections-tagline reveal">Non ti mostriamo tanti strumenti separati. <strong>Il valore nasce dalle connessioni.</strong></p>
+      <p class="connections-tagline reveal">Tu gestisci il locale. <strong>Respiru tiene insieme ciò che succede.</strong></p>
+    </section>
+
+    <section class="reaction section-band" id="sistema-reagisce">
+      <div class="section-heading centered reveal">
+        <p class="eyebrow">Non è una funzione isolata</p>
+        <h2>Un'azione. Tutto il sistema reagisce.</h2>
+        <p>Il magazzino non lavora da solo. La stessa comanda muove insieme scorte, scadenze, sprechi e conti.</p>
+      </div>
+
+      <div class="reaction-diagram reveal" aria-label="Comanda e ricetta portano agli ingredienti, poi al magazzino, che aggiorna insieme scorte, scadenze e sprechi, fino a costi e margine">
+        <div class="reaction-row reaction-row--pair">
+          <span class="reaction-node">Comanda</span>
+          <span class="reaction-node">Ricetta</span>
+        </div>
+        <span class="reaction-connector" aria-hidden="true"></span>
+        <div class="reaction-row">
+          <span class="reaction-node">Ingredienti</span>
+        </div>
+        <span class="reaction-connector" aria-hidden="true"></span>
+        <div class="reaction-row">
+          <span class="reaction-node reaction-node--hub">Magazzino</span>
+        </div>
+        <span class="reaction-connector" aria-hidden="true"></span>
+        <div class="reaction-branch-group">
+          <span class="reaction-node reaction-node--small">Scorte</span>
+          <span class="reaction-node reaction-node--small">Scadenze</span>
+          <span class="reaction-node reaction-node--small">Sprechi</span>
+        </div>
+        <span class="reaction-connector" aria-hidden="true"></span>
+        <div class="reaction-row">
+          <span class="reaction-node">Costi</span>
+        </div>
+        <span class="reaction-connector" aria-hidden="true"></span>
+        <div class="reaction-row">
+          <span class="reaction-node reaction-node--final">Margine</span>
+        </div>
+      </div>
+
+      <p class="connections-tagline reveal">Una vendita non è soltanto una vendita. <strong>È l'inizio di una reazione.</strong></p>
     </section>
 
     <section class="product-real section-band" id="prodotto">
@@ -252,34 +328,25 @@
       </div>
     </section>
 
-    <section class="outcomes section-narrow" id="risultati">
-      <div class="section-heading reveal">
-        <p class="eyebrow">Cosa cambia davvero</p>
-        <h2>Più lucidità nelle decisioni, meno stress nella gestione.</h2>
+    <section class="stories section-band" id="stories">
+      <div class="stories-heading reveal">
+        <p class="eyebrow">Respiru Stories</p>
+        <h2>Piccoli dettagli. Grandi numeri.</h2>
+        <p>Le storie dietro ai dettagli: casi che mostrano come piccole inefficienze, ripetute ogni giorno, diventino margine.</p>
       </div>
-      <div class="outcome-grid">
-        <article class="outcome reveal">
-          <div class="icon calm-icon" aria-hidden="true"></div>
-          <h3>Meno confusione operativa</h3>
-          <p>Ogni reparto lavora sullo stesso sistema: sala, cucina, cassa e gestione si parlano.</p>
-        </article>
-        <article class="outcome reveal">
-          <div class="icon waste-icon" aria-hidden="true"></div>
-          <h3>Meno sprechi nascosti</h3>
-          <p>Vedi cosa si perde, perché succede e dove intervenire senza aspettare fine mese.</p>
-        </article>
-        <article class="outcome reveal">
-          <div class="icon time-icon" aria-hidden="true"></div>
-          <h3>Meno tempo perso</h3>
-          <p>Il magazzino si aggiorna, il menu resta coerente e le attività ripetitive si riducono.</p>
-        </article>
-        <article class="outcome reveal">
-          <div class="icon finance-icon" aria-hidden="true"></div>
-          <h3>Più controllo economico</h3>
-          <p>Incassi, costi e margini diventano più facili da leggere e spiegare.</p>
-        </article>
-      </div>
+
+      <div class="stories-grid reveal" id="storiesGrid" aria-live="polite"></div>
     </section>
+
+    <div class="story-overlay" id="storyOverlay" hidden>
+      <div class="story-overlay-backdrop" data-story-close></div>
+      <div class="story-panel" role="dialog" aria-modal="true" aria-labelledby="storyPanelTitle" tabindex="-1">
+        <button type="button" class="story-close" data-story-close aria-label="Chiudi la storia">
+          <span aria-hidden="true">✕</span>
+        </button>
+        <div class="story-panel-content" id="storyPanelContent"></div>
+      </div>
+    </div>
 
     <section class="ai-section section-band" id="ai">
       <div class="ai-copy reveal">
@@ -325,6 +392,35 @@
         </li>
       </ol>
       <p class="connections-tagline ai-tagline reveal">L'AI accelera il lavoro. <strong>La decisione resta umana.</strong></p>
+    </section>
+
+    <section class="outcomes section-narrow" id="risultati">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Cosa cambia davvero</p>
+        <h2>Più lucidità nelle decisioni, meno stress nella gestione.</h2>
+      </div>
+      <div class="outcome-grid">
+        <article class="outcome reveal">
+          <div class="icon calm-icon" aria-hidden="true"></div>
+          <h3>Meno confusione operativa</h3>
+          <p>Ogni reparto lavora sullo stesso sistema: sala, cucina, cassa e gestione si parlano.</p>
+        </article>
+        <article class="outcome reveal">
+          <div class="icon waste-icon" aria-hidden="true"></div>
+          <h3>Meno sprechi nascosti</h3>
+          <p>Vedi cosa si perde, perché succede e dove intervenire senza aspettare fine mese.</p>
+        </article>
+        <article class="outcome reveal">
+          <div class="icon time-icon" aria-hidden="true"></div>
+          <h3>Meno tempo perso</h3>
+          <p>Il magazzino si aggiorna, il menu resta coerente e le attività ripetitive si riducono.</p>
+        </article>
+        <article class="outcome reveal">
+          <div class="icon finance-icon" aria-hidden="true"></div>
+          <h3>Più controllo economico</h3>
+          <p>Incassi, costi e margini diventano più facili da leggere e spiegare.</p>
+        </article>
+      </div>
     </section>
 
     <section class="proof section-narrow reveal">
@@ -526,6 +622,7 @@
     </footer>
   </main>
 
+  <script src="stories-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
