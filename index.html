@@ -320,7 +320,18 @@
         <p>Le storie dietro ai dettagli: casi che mostrano come piccole inefficienze, ripetute ogni giorno, diventino margine.</p>
       </div>
 
-      <div class="stories-grid reveal" id="storiesGrid" aria-live="polite"></div>
+      <div class="stories-carousel reveal">
+        <div class="stories-track" id="storiesGrid" tabindex="0" aria-label="Storie Respiru: usa le frecce o scorri per vedere gli altri casi" aria-live="polite"></div>
+        <div class="stories-controls">
+          <button type="button" class="stories-arrow stories-prev" aria-label="Storia precedente">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <div class="stories-dots" id="storiesDots"></div>
+          <button type="button" class="stories-arrow stories-next" aria-label="Storia successiva">
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+      </div>
     </section>
 
     <div class="story-overlay" id="storyOverlay" hidden>

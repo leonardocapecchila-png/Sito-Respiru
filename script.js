@@ -172,6 +172,76 @@ if (storiesGrid && storyOverlay && storyPanelContent && typeof RESPIRU_STORIES !
     storiesGrid.appendChild(card);
   });
 
+  /* Carousel controls: only needed with more than one story */
+  const storyCards = Array.from(storiesGrid.children);
+  const storiesDots = document.getElementById('storiesDots');
+  const storiesControls = document.querySelector('.stories-controls');
+  const storiesPrev = document.querySelector('.stories-prev');
+  const storiesNext = document.querySelector('.stories-next');
+
+  if (storyCards.length > 1 && storiesDots && storiesControls && storiesPrev && storiesNext) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const scrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+
+    storyCards.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'stories-dot';
+      dot.setAttribute('aria-label', `Vai alla storia ${index + 1} di ${storyCards.length}`);
+      dot.addEventListener('click', () => {
+        storyCards[index].scrollIntoView({ behavior: scrollBehavior, inline: 'start', block: 'nearest' });
+      });
+      storiesDots.appendChild(dot);
+    });
+
+    const dotEls = Array.from(storiesDots.children);
+
+    const updateCarouselState = () => {
+      const trackLeft = storiesGrid.getBoundingClientRect().left;
+      let activeIndex = 0;
+      let closestDistance = Infinity;
+
+      storyCards.forEach((card, index) => {
+        const distance = Math.abs(card.getBoundingClientRect().left - trackLeft);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          activeIndex = index;
+        }
+      });
+
+      dotEls.forEach((dot, index) => {
+        const isActive = index === activeIndex;
+        dot.classList.toggle('is-active', isActive);
+        if (isActive) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+
+      storiesPrev.disabled = activeIndex === 0;
+      storiesNext.disabled = activeIndex === storyCards.length - 1;
+    };
+
+    let scrollDebounce;
+    storiesGrid.addEventListener('scroll', () => {
+      window.clearTimeout(scrollDebounce);
+      scrollDebounce = window.setTimeout(updateCarouselState, 80);
+    }, { passive: true });
+
+    storiesGrid.addEventListener('scrollend', updateCarouselState, { passive: true });
+
+    storiesPrev.addEventListener('click', () => {
+      storiesGrid.scrollBy({ left: -storiesGrid.clientWidth, behavior: scrollBehavior });
+    });
+
+    storiesNext.addEventListener('click', () => {
+      storiesGrid.scrollBy({ left: storiesGrid.clientWidth, behavior: scrollBehavior });
+    });
+
+    window.addEventListener('resize', updateCarouselState, { passive: true });
+    updateCarouselState();
+  } else if (storiesControls) {
+    storiesControls.hidden = true;
+  }
+
   const getFocusable = () =>
     Array.from(
       storyOverlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
