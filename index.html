@@ -18,32 +18,132 @@
   <meta property="og:url" content="https://respiru.it/">
   <meta property="og:title" content="Respiru | Il valore nasce dalle connessioni">
   <meta property="og:description" content="Il magazzino che si aggiorna mentre lavori. Respiru collega cassa, ricette, scorte, costi e prenotazioni in un unico sistema.">
-  <meta property="og:image" content="https://respiru.it/assets/screenshots/respiru-dashboard-desktop.png">
-  <meta property="og:image:width" content="2871">
-  <meta property="og:image:height" content="1514">
+  <meta property="og:image" content="https://respiru.it/assets/og/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Respiru | Il valore nasce dalle connessioni">
   <meta name="twitter:description" content="Il magazzino che si aggiorna mentre lavori. Respiru collega cassa, ricette, scorte, costi e prenotazioni in un unico sistema.">
-  <meta name="twitter:image" content="https://respiru.it/assets/screenshots/respiru-dashboard-desktop.png">
+  <meta name="twitter:image" content="https://respiru.it/assets/og/og-image.jpg">
 
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Respiru",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "url": "https://respiru.it/",
-    "description": "Respiru collega cassa, magazzino, ricette, sprechi, costi e prenotazioni del tuo ristorante in un unico sistema.",
-    "offers": {
-      "@type": "Offer",
-      "price": "99",
-      "priceCurrency": "EUR",
-      "priceValidUntil": "2027-12-31",
-      "url": "https://respiru.it/#prezzi"
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://respiru.it/#organization",
+        "name": "Respiru",
+        "url": "https://respiru.it/",
+        "logo": "https://respiru.it/assets/brand/logo-header.png",
+        "email": "leonardo.capecchi.la@gmail.com",
+        "telephone": "+39 339 717 6562",
+        "areaServed": "IT"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Respiru",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": "https://respiru.it/",
+        "description": "Respiru collega cassa, magazzino, ricette, sprechi, costi e prenotazioni del tuo ristorante in un unico sistema.",
+        "image": "https://respiru.it/assets/og/og-image.jpg",
+        "publisher": { "@id": "https://respiru.it/#organization" },
+        "offers": {
+          "@type": "Offer",
+          "price": "99",
+          "priceCurrency": "EUR",
+          "url": "https://respiru.it/#prezzi"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Ho già un gestionale, perché dovrei cambiare?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Perché probabilmente oggi cassa, magazzino e conti vivono in strumenti diversi che non si parlano. Respiru li collega: quello che succede in un punto si vede subito negli altri."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Devo cambiare tutta la cassa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ne parliamo in demo caso per caso. L'obiettivo non è stravolgere quello che già funziona, ma collegarlo al resto del sistema."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Il personale riuscirà a usarlo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sì. Respiru è pensato per essere semplice, guidato e chiaro anche per chi non ama i gestionali complicati, e ti accompagniamo nella formazione iniziale."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quanto costa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La tariffa Founder è €99/mese per la prima sede e €49/mese per ogni sede aggiuntiva, disponibile per i primi 35 clienti. Resta invariata finché rimani cliente attivo."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Posso usarlo su più sedi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sì. Ogni sede aggiuntiva si collega allo stesso sistema, con la tariffa dedicata alle sedi aggiuntive."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quanto tempo serve per iniziare a usarlo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Dipende dal locale, ma l’obiettivo è partire in modo guidato, configurando le parti essenziali senza bloccare il lavoro quotidiano."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Respiru aiuta davvero a ridurre gli sprechi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sì, perché rende più visibili consumi, scorte e prodotti sprecati, aiutandoti a capire dove intervenire."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Il menu digitale posso modificarlo da solo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sì. Puoi aggiornare piatti, prezzi, disponibilità e informazioni senza dover dipendere ogni volta da qualcuno."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "L’intelligenza artificiale cosa fa concretamente?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aiuta a leggere bolle e fatture, aggiornare il magazzino, individuare sprechi e segnalare scorte basse. La decisione finale resta sempre umana."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Devo cambiare tutto il mio modo di lavorare?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Respiru nasce per adattarsi al locale e portare ordine gradualmente, non per stravolgere abitudini sane."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
