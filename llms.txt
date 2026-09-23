@@ -6,6 +6,11 @@ Respiru non è un elenco di funzioni scollegate: ogni vendita aggiorna in automa
 
 Il prodotto è in fase Founders: tariffa €99/mese per la prima sede e €49/mese per ogni sede aggiuntiva, riservata ai primi 35 clienti, valida finché il cliente resta attivo. Terminati i 35 posti entrerà in vigore un nuovo listino, non ancora comunicato.
 
+## Pagine
+
+- [Chi siamo](https://respiru.it/chi-siamo): perché esiste Respiru, il principio "il valore nasce dalle connessioni", i principi di prodotto, la direzione futura e chi c'è dietro — Leonardo Capecchi, fondatore (leonardocapecchi.it).
+- [Contatti](https://respiru.it/contatti): tre percorsi — conoscere Respiru (demo), assistenza per chi è già cliente, partnership e altre richieste — con i canali ufficiali e una piccola FAQ.
+
 ## Sezioni della homepage
 
 - [Il magazzino automatico](https://respiru.it/#magazzino): come una comanda aggiorna in automatico ricetta, ingredienti, scorte, food cost e margine, senza inserimenti manuali.
