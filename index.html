@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Respiru | Gestionale per Ristoranti</title>
-  <meta name="description" content="Respiru collega cassa, magazzino, ricette, sprechi, costi e prenotazioni del tuo ristorante. Il magazzino si aggiorna mentre lavori: niente più conteggi a mano.">
+  <title>Respiru | Gestionale di Cassa per Ristoranti</title>
+  <meta name="description" content="Respiru è il gestionale di cassa per la ristorazione che collega vendite, comande, ricette, magazzino, food cost e margini in un unico sistema.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://respiru.it/">
 
@@ -48,12 +48,20 @@
         "founder": { "@id": "https://respiru.it/chi-siamo#leonardo-capecchi" }
       },
       {
+        "@type": "WebSite",
+        "@id": "https://respiru.it/#website",
+        "name": "Respiru",
+        "url": "https://respiru.it/",
+        "publisher": { "@id": "https://respiru.it/#organization" },
+        "inLanguage": "it-IT"
+      },
+      {
         "@type": "SoftwareApplication",
         "name": "Respiru",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "url": "https://respiru.it/",
-        "description": "Respiru collega cassa, magazzino, ricette, sprechi, costi e prenotazioni del tuo ristorante in un unico sistema.",
+        "description": "Respiru è il gestionale di cassa per la ristorazione che collega vendite, comande, ricette, magazzino, food cost e margini in un unico sistema.",
         "image": "https://respiru.it/assets/og/og-image.jpg",
         "publisher": { "@id": "https://respiru.it/#organization" },
         "offers": {
@@ -178,10 +186,10 @@
   <main id="top">
     <section class="hero section-band">
       <div class="hero-copy reveal">
-        <p class="eyebrow">Gestionale horeca nato per semplificare</p>
+        <p class="eyebrow">Il gestionale di cassa per la ristorazione</p>
         <h1>Meno caos. Più controllo. Finalmente respiri.</h1>
-        <p class="hero-text">Respiru collega ciò che oggi lavora separato nel tuo locale: una vendita aggiorna il magazzino, il magazzino comunica con le ricette, gli sprechi incidono sui costi. Vendite e prenotazioni diventano dati su cui decidere — tutto nello stesso sistema. <strong>Il valore nasce dalle connessioni.</strong></p>
-        <p class="hero-modules" aria-label="Aree collegate da Respiru">Cassa <span aria-hidden="true">·</span> Magazzino <span aria-hidden="true">·</span> Sprechi <span aria-hidden="true">·</span> Menu <span aria-hidden="true">·</span> Prenotazioni <span aria-hidden="true">·</span> Finanze <span aria-hidden="true">·</span> AI</p>
+        <p class="hero-text">Respiru è il gestionale di cassa per la ristorazione che collega vendite, comande, ricette, magazzino, food cost e margini in un unico sistema: una vendita in cassa genera la comanda, la comanda richiama la ricetta, la ricetta scala gli ingredienti dal magazzino, il magazzino aggiorna in automatico food cost e margine. <strong><a href="/chi-siamo">Il valore nasce dalle connessioni.</a></strong></p>
+        <p class="hero-modules" aria-label="Aree collegate da Respiru">Cassa <span aria-hidden="true">·</span> Comande <span aria-hidden="true">·</span> Ricette <span aria-hidden="true">·</span> Magazzino <span aria-hidden="true">·</span> Food cost <span aria-hidden="true">·</span> Margini <span aria-hidden="true">·</span> Analytics</p>
         <div class="hero-actions">
           <a class="button primary" href="#demo">Richiedi una demo</a>
           <a class="button secondary" href="#magazzino">Vedi come funziona</a>
@@ -292,15 +300,22 @@
       <div class="section-heading centered reveal">
         <p class="eyebrow">Il cavallo di battaglia di Respiru</p>
         <h2>Il magazzino che si aggiorna mentre lavori.</h2>
-        <p>Vendi un piatto. Respiru conosce la ricetta. Gli ingredienti vengono scalati. Le scorte si aggiornano. Tu gestisci il locale — Respiru tiene insieme ciò che succede.</p>
+        <p>Vendi un piatto in cassa. Respiru conosce la ricetta. Gli ingredienti vengono scalati. Le scorte si aggiornano. Tu gestisci il locale — Respiru tiene insieme ciò che succede.</p>
       </div>
 
-      <ol class="chain" aria-label="Come una comanda aggiorna il magazzino in automatico">
+      <ol class="chain" aria-label="Come una vendita in cassa aggiorna comanda, ricetta, magazzino, food cost, margine e analytics in automatico">
+        <li class="chain-node reveal">
+          <span class="chain-dot" aria-hidden="true"></span>
+          <div class="chain-text">
+            <strong>Cassa</strong>
+            <span>Registri la vendita, come ogni giorno.</span>
+          </div>
+        </li>
         <li class="chain-node reveal">
           <span class="chain-dot" aria-hidden="true"></span>
           <div class="chain-text">
             <strong>Comanda</strong>
-            <span>Un piatto ordinato, come sempre.</span>
+            <span>La cassa genera la comanda in automatico.</span>
           </div>
         </li>
         <li class="chain-node reveal">
@@ -331,11 +346,18 @@
             <span>Il costo del piatto resta sempre sotto controllo.</span>
           </div>
         </li>
-        <li class="chain-node chain-final reveal">
+        <li class="chain-node reveal">
           <span class="chain-dot" aria-hidden="true"></span>
           <div class="chain-text">
             <strong>Margine</strong>
             <span>Sai subito cosa resta, non a fine mese.</span>
+          </div>
+        </li>
+        <li class="chain-node chain-final reveal">
+          <span class="chain-dot" aria-hidden="true"></span>
+          <div class="chain-text">
+            <strong>Analytics</strong>
+            <span>Tutto confluisce in un'unica vista d'insieme.</span>
           </div>
         </li>
       </ol>
@@ -347,10 +369,10 @@
       <div class="section-heading centered reveal">
         <p class="eyebrow">Non è una funzione isolata</p>
         <h2>Un'azione. Tutto il sistema reagisce.</h2>
-        <p>Il magazzino non lavora da solo. La stessa comanda muove insieme scorte, scadenze, sprechi e conti.</p>
+        <p>Il magazzino non lavora da solo. La stessa vendita in cassa muove insieme comanda, scorte, scadenze, sprechi, food cost, margine e analytics.</p>
       </div>
 
-      <div class="reaction-diagram reveal" aria-label="Comanda e ricetta portano agli ingredienti, poi al magazzino, che aggiorna insieme scorte, scadenze e sprechi, fino a costi e margine">
+      <div class="reaction-diagram reveal" aria-label="Una vendita in cassa genera comanda e ricetta, che portano agli ingredienti, poi al magazzino, che aggiorna insieme scorte, scadenze e sprechi, fino a food cost, margine e analytics">
         <div class="reaction-row reaction-row--pair">
           <span class="reaction-node">Comanda</span>
           <span class="reaction-node">Ricetta</span>
@@ -371,7 +393,7 @@
         </div>
         <span class="reaction-connector" aria-hidden="true"></span>
         <div class="reaction-row">
-          <span class="reaction-node">Costi</span>
+          <span class="reaction-node">Food cost</span>
         </div>
         <span class="reaction-connector" aria-hidden="true"></span>
         <div class="reaction-row">

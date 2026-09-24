@@ -211,6 +211,10 @@ h3 {
   margin: 24px 0 0;
 }
 
+.hero-text a:hover {
+  text-decoration: underline;
+}
+
 .hero-modules {
   margin: 16px 0 0;
   color: var(--blue);
