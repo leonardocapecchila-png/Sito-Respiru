@@ -13,6 +13,11 @@ const types = {
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
   ".svg": "image/svg+xml",
+  ".webp": "image/webp",
+  ".ico": "image/x-icon",
+  ".xml": "application/xml; charset=utf-8",
+  ".txt": "text/plain; charset=utf-8",
+  ".webmanifest": "application/manifest+json; charset=utf-8",
 };
 
 const parseBody = (rawBody, contentType) => {
@@ -70,18 +75,38 @@ const server = http.createServer((request, response) => {
     return;
   }
 
-  fs.readFile(filePath, (error, content) => {
-    if (error) {
-      response.writeHead(404);
-      response.end("Not found");
-      return;
-    }
+  const serveFile = (targetPath) => {
+    fs.readFile(targetPath, (error, content) => {
+      if (error) {
+        // Mimic Vercel's cleanUrls: /page falls back to /page.html when no extension matches.
+        if (error.code !== "ENOENT" || path.extname(targetPath) !== "") {
+          response.writeHead(404);
+          response.end("Not found");
+          return;
+        }
 
-    response.writeHead(200, {
-      "Content-Type": types[path.extname(filePath)] || "application/octet-stream",
+        const withHtml = `${targetPath}.html`;
+        fs.readFile(withHtml, (fallbackError, fallbackContent) => {
+          if (fallbackError) {
+            response.writeHead(404);
+            response.end("Not found");
+            return;
+          }
+
+          response.writeHead(200, { "Content-Type": types[".html"] });
+          response.end(fallbackContent);
+        });
+        return;
+      }
+
+      response.writeHead(200, {
+        "Content-Type": types[path.extname(targetPath)] || "application/octet-stream",
+      });
+      response.end(content);
     });
-    response.end(content);
-  });
+  };
+
+  serveFile(filePath);
 });
 
 server.listen(port, "127.0.0.1", () => {
