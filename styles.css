@@ -125,8 +125,8 @@ select {
 
 .nav-toggle {
   display: none;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border: 0;
   border-radius: 50%;
   background: var(--blue);
@@ -1315,6 +1315,7 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
   border: 1px solid var(--line-strong);
   border-radius: 10px;
   padding: 14px 16px;
@@ -1331,11 +1332,13 @@ h3 {
   color: var(--muted);
   font-size: 0.8rem;
   font-weight: 760;
+  overflow-wrap: anywhere;
 }
 
 .contact-link strong {
   color: var(--blue);
   font-size: 1.02rem;
+  overflow-wrap: anywhere;
 }
 
 .contact-whatsapp {
@@ -1448,17 +1451,27 @@ h3 {
 }
 
 .stories-dot {
-  width: 8px;
-  height: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
   padding: 0;
   border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.stories-dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--line-strong);
-  cursor: pointer;
   transition: background 180ms ease, transform 180ms ease;
 }
 
-.stories-dot.is-active {
+.stories-dot.is-active::before {
   background: var(--peach);
   transform: scale(1.3);
 }
@@ -1513,7 +1526,8 @@ h3 {
   align-self: flex-start;
   border: 0;
   background: transparent;
-  padding: 0;
+  padding: 12px 0;
+  margin: -12px 0;
   color: var(--sun);
   font-weight: 850;
   font-size: 0.98rem;
@@ -1584,8 +1598,8 @@ body.story-lock {
   position: sticky;
   top: 0;
   float: right;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   margin-left: 12px;
   border: 1px solid var(--line-strong);
   border-radius: 50%;
@@ -1918,13 +1932,36 @@ body.story-lock {
   }
 
   .hero-visual {
-    min-height: 420px;
+    min-height: 480px;
   }
 
   .desktop-device {
     left: 50%;
-    width: 75%;
+    top: 20px;
+    width: 58%;
+    max-width: 400px;
     transform: translateX(-50%);
+  }
+
+  .tablet-device {
+    display: none;
+  }
+
+  .phone-device {
+    right: 6%;
+    left: auto;
+    bottom: 0;
+    width: 130px;
+    min-height: 220px;
+  }
+
+  .dash-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dash-grid article:nth-child(3),
+  .insight-panel {
+    display: none;
   }
 
   .outcome-grid {
@@ -1991,7 +2028,7 @@ body.story-lock {
 
   .hero-visual {
     grid-row: 1;
-    min-height: 320px;
+    min-height: 360px;
     margin-bottom: 48px;
     perspective: none;
   }
@@ -2070,7 +2107,7 @@ body.story-lock {
   }
 
   .dash-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     margin-top: 12px;
   }
@@ -2078,15 +2115,6 @@ body.story-lock {
   .dash-grid article {
     min-height: 70px;
     padding: 10px;
-  }
-
-  .dash-grid article:nth-child(3),
-  .insight-panel {
-    display: none;
-  }
-
-  .tablet-device {
-    display: none;
   }
 
   .phone-device {
@@ -2215,11 +2243,6 @@ body.story-lock {
 
   .story-card {
     padding: 26px 22px;
-  }
-
-  .stories-arrow {
-    width: 38px;
-    height: 38px;
   }
 
   .story-panel {
@@ -2469,11 +2492,15 @@ body.story-lock {
   }
 
   .intent-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 720px) {
+  .intent-grid {
+    grid-template-columns: 1fr;
+  }
+
   .page-hero {
     padding-top: 120px;
   }
