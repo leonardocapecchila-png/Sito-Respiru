@@ -1159,107 +1159,247 @@ h3 {
   padding: 92px 0 78px;
 }
 
-.pricing-toggle {
-  display: inline-flex;
-  margin: 36px auto 0;
-  padding: 4px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  gap: 4px;
+/* Respiru Founding Restaurants — campagna di adesione */
+
+.founders-campaign {
+  --fc-blue: #4195B1;
+  --fc-terracotta: #9A5038;
+  --fc-cream: #F3E3D1;
 }
 
-.pricing .section-heading.centered + .pricing-toggle {
+.founders-progress {
+  max-width: 760px;
+  margin: 40px auto 0;
+  padding: 28px clamp(20px, 4vw, 36px);
+  border: 1px solid rgba(65, 149, 177, 0.3);
+  border-radius: 20px;
+  background: var(--fc-cream);
+}
+
+.founders-progress-top {
   display: flex;
-  width: fit-content;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
-.pricing-toggle-btn {
-  border: 0;
+.founders-progress-label {
+  display: inline-flex;
   border-radius: 999px;
-  padding: 10px 20px;
-  background: transparent;
-  color: var(--blue);
-  font-weight: 800;
-  cursor: pointer;
-  transition: background 180ms ease, color 180ms ease;
+  padding: 7px 14px;
+  background: rgba(65, 149, 177, 0.14);
+  color: var(--fc-blue);
+  font-weight: 850;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-.pricing-toggle-btn.is-active {
-  background: var(--blue);
-  color: var(--white);
+.founders-progress-count {
+  color: var(--ink);
+  font-weight: 760;
+  font-size: 0.96rem;
 }
 
-.pricing-grid {
+.founders-progress-count strong {
+  color: var(--fc-terracotta);
+  font-size: 1.2rem;
+}
+
+.founders-progress-bar {
+  height: 16px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(65, 149, 177, 0.16);
+}
+
+.founders-progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--fc-blue), var(--fc-terracotta));
+  transition: width 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.founders-progress-note {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.founders-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-  margin-top: 32px;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 24px;
+  max-width: 980px;
+  margin: 32px auto 0;
+  align-items: stretch;
 }
 
-.pricing-card {
+.founders-benefits {
+  padding: clamp(24px, 3vw, 36px);
   border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 32px;
+  border-radius: 20px;
   background: rgba(253, 248, 240, 0.86);
 }
 
-.pricing-card--secondary {
-  background: transparent;
-  border-style: dashed;
+.founders-benefits h3 {
+  margin-bottom: 18px;
 }
 
-.pricing-label {
+.founders-benefits-list {
+  display: grid;
+  gap: 14px;
   margin: 0;
-  color: var(--muted);
+  padding: 0;
+  list-style: none;
+}
+
+.founders-benefits-list li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.founders-benefits-list li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--fc-terracotta);
+}
+
+.founders-checkout-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: 20px;
+  background: var(--fc-blue);
+  color: var(--fc-cream);
+  box-shadow: 0 26px 60px rgba(23, 39, 45, 0.22);
+}
+
+.founders-fee-label {
+  margin: 0 0 8px;
+  color: var(--fc-cream);
   font-weight: 800;
   text-transform: uppercase;
   font-size: 0.8rem;
   letter-spacing: 0.06em;
+  opacity: 0.85;
 }
 
-.pricing-amount {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  margin: 14px 0 12px;
-}
-
-.pricing-value {
-  color: var(--blue);
-  font-size: clamp(2.2rem, 4vw, 2.9rem);
+.founders-fee-amount {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
   font-weight: 850;
+  line-height: 1;
 }
 
-.pricing-period {
-  color: var(--muted);
-  font-weight: 760;
+.founders-fee-amount span {
+  margin-left: 6px;
+  color: var(--fc-cream);
+  font-size: 1rem;
+  font-weight: 700;
+  opacity: 0.85;
 }
 
-.pricing-note {
-  margin: 0;
-  color: var(--muted);
+.founders-fee-detail {
+  margin: 0 0 24px;
+  color: var(--fc-cream);
+  font-size: 0.96rem;
   line-height: 1.6;
+  opacity: 0.92;
 }
 
-.pricing-founders {
-  max-width: 640px;
-  margin: 30px auto 0;
-  text-align: center;
+.founders-fee-detail strong {
+  color: #fff;
 }
 
-.pricing-founders p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.6;
+.founders-cta {
+  background: var(--fc-terracotta);
+  color: #fff;
+  box-shadow: 0 16px 32px rgba(154, 80, 56, 0.4);
 }
 
-.pricing-founders strong {
-  color: var(--blue);
+.founders-cta:hover {
+  background: #823f2b;
 }
 
-.pricing-fineprint {
-  margin-top: 8px !important;
+.founders-cta:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+}
+
+.founders-fee-fineprint {
+  margin: 16px 0 0;
+  color: var(--fc-cream);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.founders-fee-fineprint a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.founders-fee-status {
+  margin: 10px 0 0;
+  color: #ffe0b3;
   font-size: 0.86rem;
+  font-weight: 700;
+  min-height: 1.2em;
+}
+
+/* Termini Founding Restaurants — nota segnaposto contenuti legali */
+
+.legal-placeholder-notice {
+  padding: 18px 22px;
+  border: 1px solid rgba(231, 111, 81, 0.4);
+  border-radius: 14px;
+  background: rgba(233, 196, 106, 0.18);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.legal-placeholder-notice code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(38, 70, 83, 0.1);
+  font-size: 0.9em;
+}
+
+.legal-section {
+  padding-bottom: 80px;
+}
+
+.legal-section h2 {
+  margin: 44px 0 14px;
+  font-size: 1.5rem;
+}
+
+.legal-section h2:first-child {
+  margin-top: 0;
+}
+
+.legal-section p,
+.legal-section li {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.legal-section ul {
+  padding-left: 22px;
 }
 
 .cta-final {
@@ -1926,6 +2066,11 @@ body.story-lock {
     grid-template-columns: 1fr;
   }
 
+  .founders-grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+  }
+
   .hero {
     padding-top: 100px;
     padding-bottom: 40px;
@@ -1971,14 +2116,8 @@ body.story-lock {
   .ai-section .ai-tagline {
     grid-column: auto;
   }
-
-  .pricing-grid {
-    grid-template-columns: 1fr;
-    max-width: 420px;
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
+
 
 @media (max-width: 1000px) {
   .site-header {
@@ -2016,6 +2155,16 @@ body.story-lock {
 }
 
 @media (max-width: 720px) {
+  .founders-progress {
+    padding: 22px 18px;
+  }
+
+  .founders-progress-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
   .hero {
     display: grid;
     grid-template-columns: 1fr;
@@ -2191,19 +2340,6 @@ body.story-lock {
   .shot-annotation {
     font-size: 0.7rem;
     padding: 6px 10px;
-  }
-
-  .pricing-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .pricing-toggle {
-    display: flex;
-    width: 100%;
-  }
-
-  .pricing-toggle-btn {
-    flex: 1;
   }
 
   .cta-final-inner {

@@ -40,6 +40,37 @@ const server = http.createServer((request, response) => {
   const safePath = requestedPath === "/" ? "index.html" : path.normalize(requestedPath).replace(/^[/\\]+/, "").replace(/^(\.\.[/\\])+/, "");
   const filePath = path.resolve(root, safePath);
 
+  if (requestedPath.startsWith("/api/")) {
+    const apiName = requestedPath.replace(/^\/api\//, "").replace(/\/$/, "");
+    if (apiName.startsWith("_") || apiName.includes("..")) {
+      response.writeHead(404);
+      response.end("Not found");
+      return;
+    }
+    const apiPath = path.join(root, "api", `${apiName}.js`);
+    if (!fs.existsSync(apiPath)) {
+      response.writeHead(404);
+      response.end("Not found");
+      return;
+    }
+    try {
+      delete require.cache[require.resolve(apiPath)];
+      const handler = require(apiPath);
+      Promise.resolve(handler(request, response)).catch((error) => {
+        console.error(`Errore in ${requestedPath}:`, error);
+        if (!response.headersSent) {
+          response.writeHead(500, { "Content-Type": "application/json; charset=utf-8" });
+          response.end(JSON.stringify({ error: "Errore interno" }));
+        }
+      });
+    } catch (error) {
+      console.error(`Errore caricando ${requestedPath}:`, error);
+      response.writeHead(500, { "Content-Type": "application/json; charset=utf-8" });
+      response.end(JSON.stringify({ error: "Errore interno" }));
+    }
+    return;
+  }
+
   if (request.method === "POST" && requestedPath === "/submit-demo") {
     let body = "";
     request.on("data", (chunk) => {

@@ -103,26 +103,7 @@ faqButtons.forEach((button) => {
   });
 });
 
-const pricingToggleButtons = document.querySelectorAll('.pricing-toggle-btn');
-const pricingValues = document.querySelectorAll('.pricing-value');
-const pricingPeriods = document.querySelectorAll('.pricing-period');
 
-pricingToggleButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const billing = button.dataset.billing;
-
-    pricingToggleButtons.forEach((btn) => btn.classList.toggle('is-active', btn === button));
-
-    pricingValues.forEach((el) => {
-      const value = billing === 'year' ? el.dataset.priceYear : el.dataset.priceMonth;
-      el.textContent = `€${value}`;
-    });
-
-    pricingPeriods.forEach((el) => {
-      el.textContent = billing === 'year' ? el.dataset.periodYear : el.dataset.periodMonth;
-    });
-  });
-});
 
 /* Respiru Stories: card list + editorial overlay */
 const storiesGrid = document.getElementById('storiesGrid');
@@ -314,5 +295,92 @@ if (storiesGrid && storyOverlay && storyPanelContent && typeof RESPIRU_STORIES !
       first.focus();
     }
   });
+}
+
+/* Respiru Founding Restaurants: contatore live + checkout */
+const fcRoot = document.querySelector('[data-fc-root]');
+
+if (fcRoot) {
+  const fcCountEl = document.querySelector('[data-fc-count]');
+  const fcThresholdEl = document.querySelector('[data-fc-threshold]');
+  const fcFillEl = document.querySelector('[data-fc-fill]');
+  const fcLabelEl = document.querySelector('[data-fc-phase-label]');
+  const fcNoteEl = document.querySelector('[data-fc-note]');
+  const fcCtaBtn = document.querySelector('[data-fc-cta]');
+  const fcCtaStatus = document.querySelector('[data-fc-cta-status]');
+
+  const FC_PHASES = {
+    raccolta: { label: 'In raccolta adesioni' },
+    confermato: { label: 'Progetto confermato' },
+    lancio_preparazione: { label: 'Lancio in preparazione' },
+    pronto: { label: 'Respiru è pronto' },
+  };
+
+  const renderFounderCount = (data) => {
+    const count = Number(data.count) || 0;
+    const threshold = Number(data.threshold) || 35;
+    const phase = FC_PHASES[data.phase] ? data.phase : 'raccolta';
+
+    if (fcCountEl) fcCountEl.textContent = count;
+    if (fcThresholdEl) fcThresholdEl.textContent = threshold;
+    if (fcLabelEl) fcLabelEl.textContent = FC_PHASES[phase].label;
+
+    const percent = Math.min(100, Math.round((count / threshold) * 100));
+    if (fcFillEl) {
+      requestAnimationFrame(() => {
+        fcFillEl.style.width = `${percent}%`;
+      });
+    }
+
+    let note;
+    if (phase === 'raccolta') {
+      const remaining = Math.max(0, threshold - count);
+      note = remaining > 0
+        ? `Mancano ${remaining} adesioni per confermare il progetto.`
+        : 'Stiamo confermando le ultime adesioni ricevute.';
+    } else if (phase === 'confermato') {
+      note = 'Soglia raggiunta: il progetto è confermato. Le adesioni restano aperte.';
+    } else if (phase === 'lancio_preparazione') {
+      note = 'Progetto confermato: stiamo sviluppando, testando e preparando le attivazioni.';
+    } else {
+      note = 'Respiru è pronto per l’attivazione dei Founding Restaurants.';
+    }
+    if (fcNoteEl) fcNoteEl.textContent = note;
+  };
+
+  fetch('/api/founders-count')
+    .then((r) => {
+      if (!r.ok) throw new Error('request failed');
+      return r.json();
+    })
+    .then(renderFounderCount)
+    .catch(() => {
+      if (fcLabelEl) fcLabelEl.textContent = 'Contatore non disponibile';
+      if (fcNoteEl) fcNoteEl.textContent = 'Non riusciamo a caricare il contatore in questo momento. Riprova tra poco.';
+    });
+
+  if (fcCtaBtn) {
+    fcCtaBtn.addEventListener('click', async () => {
+      fcCtaBtn.disabled = true;
+      const originalLabel = fcCtaBtn.textContent;
+      fcCtaBtn.textContent = 'Apertura checkout...';
+      if (fcCtaStatus) fcCtaStatus.textContent = '';
+
+      try {
+        const response = await fetch('/api/create-checkout-session', { method: 'POST' });
+        const data = await response.json();
+
+        if (!response.ok || !data.url) {
+          throw new Error(data.error || 'Errore di avvio checkout');
+        }
+
+        window.location.href = data.url;
+      } catch (error) {
+        fcCtaBtn.disabled = false;
+        fcCtaBtn.textContent = originalLabel;
+        if (fcCtaStatus) fcCtaStatus.textContent = 'Non siamo riusciti ad aprire il checkout. Riprova tra poco.';
+      }
+    });
+  }
 }
 

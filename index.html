@@ -103,7 +103,7 @@
             "name": "Quanto costa?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "La tariffa Founder è €99/mese per la prima sede e €49/mese per ogni sede aggiuntiva, disponibile per i primi 35 clienti. Resta invariata finché rimani cliente attivo."
+              "text": "Il prezzo Founder è €99/mese per la prima sede (€49/mese per ogni sede aggiuntiva), bloccato aderendo ora alla campagna Founding Restaurants con una quota di adesione di €49 una tantum, scalata dal primo canone. Resta invariato finché rimani cliente attivo."
             }
           },
           {
@@ -581,42 +581,47 @@
       </div>
     </section>
 
-    <section class="pricing section-band" id="prezzi">
+    <section class="pricing founders-campaign section-band" id="prezzi">
       <div class="section-heading centered reveal">
-        <p class="eyebrow">Respiru Founders</p>
-        <h2>Un sistema completo. Un prezzo semplice.</h2>
-        <p>Non Basic, Pro o Enterprise: un solo sistema completo, con un prezzo che dipende solo da quante sedi hai.</p>
+        <p class="eyebrow">Respiru Founding Restaurants</p>
+        <h2>Il futuro della ristorazione inizia con te.</h2>
+        <p>Respiru sta costruendo un nuovo modo di gestire un ristorante: cassa, comande, magazzino, prenotazioni, menu digitale e controllo economico collegati tra loro. <strong>Il valore nasce dalle connessioni.</strong></p>
       </div>
 
-      <div class="pricing-toggle reveal" role="group" aria-label="Frequenza di fatturazione">
-        <button type="button" class="pricing-toggle-btn is-active" data-billing="month">Mensile</button>
-        <button type="button" class="pricing-toggle-btn" data-billing="year">Annuale</button>
+      <div class="founders-progress reveal" data-fc-root aria-live="polite">
+        <div class="founders-progress-top">
+          <span class="founders-progress-label" data-fc-phase-label>Caricamento...</span>
+          <span class="founders-progress-count"><strong data-fc-count>0</strong>/<span data-fc-threshold>35</span> adesioni confermate</span>
+        </div>
+        <div class="founders-progress-bar">
+          <div class="founders-progress-fill" data-fc-fill></div>
+        </div>
+        <p class="founders-progress-note" data-fc-note>Stiamo caricando il contatore delle adesioni.</p>
       </div>
 
-      <div class="pricing-grid reveal">
-        <article class="pricing-card">
-          <p class="pricing-label">Prima sede</p>
-          <p class="pricing-amount">
-            <span class="pricing-value" data-price-month="99" data-price-year="990">€99</span>
-            <span class="pricing-period" data-period-month="/mese" data-period-year="/anno">/mese</span>
-          </p>
-          <p class="pricing-note">Cassa, magazzino, sprechi, menu, prenotazioni, finanze e AI: tutto collegato, tutto incluso.</p>
-        </article>
-        <article class="pricing-card pricing-card--secondary">
-          <p class="pricing-label">Sedi aggiuntive</p>
-          <p class="pricing-amount">
-            <span class="pricing-value" data-price-month="49" data-price-year="490">€49</span>
-            <span class="pricing-period" data-period-month="/mese" data-period-year="/anno">/mese</span>
-          </p>
-          <p class="pricing-note">Ogni sede in più, collegata allo stesso sistema.</p>
-        </article>
-      </div>
+      <div class="founders-grid">
+        <div class="founders-benefits reveal">
+          <h3>Cosa ottieni aderendo ora</h3>
+          <ul class="founders-benefits-list">
+            <li><strong>Prezzo Founder bloccato</strong> a €99/mese.</li>
+            <li><strong>Installazione gratuita.</strong></li>
+            <li><strong>Configurazione iniziale gratuita.</strong></li>
+            <li><strong>Priorità</strong> nell'attivazione.</li>
+            <li>Condizioni <strong>riservate ai Founding Restaurants.</strong></li>
+          </ul>
+        </div>
 
-      <div class="pricing-founders reveal">
-        <p><strong>Disponibile per i primi 35 clienti Respiru.</strong> La tariffa Founder resta invariata finché rimani cliente attivo e continuativo.</p>
-        <p class="pricing-fineprint">Terminati i 35 posti Founder entrerà in vigore il nuovo listino Respiru.</p>
+        <div class="founders-checkout-card reveal">
+          <p class="founders-fee-label">Quota di adesione Founder</p>
+          <p class="founders-fee-amount">€49 <span>una tantum</span></p>
+          <p class="founders-fee-detail">Scalata interamente dal primo canone: il primo mese paghi <strong>€50</strong> invece di €99/mese.</p>
+          <button type="button" class="button primary founders-cta" data-fc-cta>Diventa un Founder</button>
+          <p class="founders-fee-fineprint">Pagamento sicuro tramite il checkout di Stripe. Prima di pagare potrai rivedere il riepilogo e accettare <a href="/termini-founder">termini della campagna e privacy</a>.</p>
+          <p class="founders-fee-status" data-fc-cta-status aria-live="polite"></p>
+        </div>
       </div>
     </section>
+
 
     <section class="faq section-band" id="faq">
       <div class="section-heading reveal">
@@ -638,7 +643,7 @@
         </article>
         <article class="faq-item">
           <button type="button" class="faq-question">Quanto costa?</button>
-          <div class="faq-answer">La tariffa Founder è €99/mese per la prima sede e €49/mese per ogni sede aggiuntiva, disponibile per i primi 35 clienti. Resta invariata finché rimani cliente attivo.</div>
+          <div class="faq-answer">Il prezzo Founder è €99/mese per la prima sede (€49/mese per ogni sede aggiuntiva), bloccato aderendo ora alla campagna Founding Restaurants con una quota di adesione di €49 una tantum, scalata dal primo canone. Resta invariato finché rimani cliente attivo.</div>
         </article>
         <article class="faq-item">
           <button type="button" class="faq-question">Posso usarlo su più sedi?</button>

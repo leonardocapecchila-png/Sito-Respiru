@@ -1,0 +1,9 @@
+{
+  "name": "respiru-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sito statico Respiru + funzioni serverless per la campagna Founding Restaurants.",
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4"
+  }
+}
