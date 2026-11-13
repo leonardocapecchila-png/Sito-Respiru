@@ -1,0 +1,34 @@
+# Respiru
+
+> Gestionale per ristoranti, bar e locali horeca: collega cassa, magazzino, ricette, sprechi, costi e prenotazioni in un unico sistema. Il magazzino si aggiorna in automatico a ogni vendita, senza inserimenti manuali.
+
+Respiru non è un elenco di funzioni scollegate: ogni vendita aggiorna in automatico la ricetta associata, scala gli ingredienti dal magazzino, ricalcola il food cost e il margine del piatto. Il principio del prodotto è "il valore nasce dalle connessioni" — cassa, magazzino, menu, prenotazioni e finanze si parlano tra loro invece di vivere in strumenti isolati, come accade nella maggior parte dei gestionali per ristorazione.
+
+Il prodotto è in fase Founding Restaurants: il prezzo standard attuale è €99,90/mese per la prima sede (€49/mese per ogni sede aggiuntiva), destinato ad aumentare nel tempo. Chi aderisce ora alla campagna con una quota di adesione una tantum di €49,90 (interamente scalata dal primo canone, che risulta quindi di €50) blocca il prezzo a €99,90/mese per sempre, con installazione, configurazione e affiancamento inclusi gratis e accesso prioritario ad aggiornamenti. Il progetto si conferma al raggiungimento di almeno 35 adesioni con pagamento effettivamente confermato; superata la soglia la campagna resta comunque aperta. Il numero di adesioni mostrato sul sito è un contatore live aggiornato solo sulla base di pagamenti realmente confermati tramite Stripe, senza alcun dato simulato o inventato.
+
+## Pagine
+
+- [Chi siamo](https://respiru.it/chi-siamo): perché esiste Respiru, il principio "il valore nasce dalle connessioni", i principi di prodotto, la direzione futura e chi c'è dietro — Leonardo Capecchi, fondatore (leonardocapecchi.it).
+- [Contatti](https://respiru.it/contatti): tre percorsi — conoscere Respiru (demo), assistenza per chi è già cliente, partnership e altre richieste — con i canali ufficiali e una piccola FAQ.
+- [Termini Founding Restaurants](https://respiru.it/termini-founder): condizioni della campagna di adesione e informativa privacy sintetica.
+
+## Sezioni della homepage
+
+- [Il magazzino automatico](https://respiru.it/#magazzino): come una comanda aggiorna in automatico ricetta, ingredienti, scorte, food cost e margine, senza inserimenti manuali.
+- [Come reagisce il sistema](https://respiru.it/#sistema-reagisce): come una singola vendita mette in moto insieme scorte, scadenze, sprechi e conti.
+- [Il prodotto reale](https://respiru.it/#prodotto): screenshot reali dell'applicazione (dashboard desktop e mobile).
+- [Respiru Stories](https://respiru.it/#stories): casi reali (American Airlines, Toyota, LeanPath/Harvard, Sweetgreen) su come piccole inefficienze operative, ripetute ogni giorno, diventino margine significativo.
+- [Intelligenza artificiale](https://respiru.it/#ai): come l'AI legge automaticamente le bolle fornitore (foto, lettura, tabella estratta), con verifica sempre umana prima dell'inserimento in magazzino.
+- [Adozione](https://respiru.it/#risultati): setup guidato, formazione all'avvio, supporto diretto, pensato per chi non ama i gestionali complicati.
+- [Founding Restaurants](https://respiru.it/#prezzi): campagna di pre-adesione con contatore live delle adesioni confermate (soglia minima 35), quota di adesione €49,90 una tantum per bloccare il prezzo a €99,90/mese per sempre; checkout diretto sul sito tramite Stripe.
+- [Domande frequenti](https://respiru.it/#faq): risposte su cambio gestionale, cambio cassa, formazione dello staff, costi, sedi multiple, tempi di attivazione.
+- [Richiedi una demo](https://respiru.it/#demo): form di contatto e WhatsApp diretto.
+
+## Contatti
+
+- WhatsApp / telefono: +39 339 717 6562
+- Email: leonardo.capecchi.la@gmail.com
+
+## Note
+
+Respiru è un prodotto in fase iniziale (Founding Restaurants): i dati mostrati nelle dashboard del sito sono dimostrativi, non risultati reali di clienti. Le storie nella sezione Respiru Stories includono sia casi aziendali di terzi (con fonte dichiarata nel contenuto) sia il principio generale che ispira il prodotto, non case study di clienti Respiru.

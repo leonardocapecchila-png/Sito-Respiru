@@ -104,3 +104,283 @@ faqButtons.forEach((button) => {
 });
 
 
+
+/* Respiru Stories: card list + editorial overlay */
+const storiesGrid = document.getElementById('storiesGrid');
+const storyOverlay = document.getElementById('storyOverlay');
+const storyPanelContent = document.getElementById('storyPanelContent');
+
+if (storiesGrid && storyOverlay && storyPanelContent && typeof RESPIRU_STORIES !== 'undefined') {
+  let lastFocusedElement = null;
+
+  const escapeHtml = (value) =>
+    String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+  const renderBodyBlock = (block) => {
+    switch (block.type) {
+      case 'lead':
+        return `<p class="story-lead">${escapeHtml(block.text)}</p>`;
+      case 'paragraph':
+        return `<p>${escapeHtml(block.text)}</p>`;
+      case 'highlight':
+        return `<p class="story-highlight">${escapeHtml(block.text)}</p>`;
+      case 'list':
+        return `<ul class="story-list">${block.items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+      case 'closing':
+        return `<p class="story-closing">${escapeHtml(block.text)}</p>`;
+      default:
+        return '';
+    }
+  };
+
+  RESPIRU_STORIES.forEach((story) => {
+    const card = document.createElement('article');
+    card.className = 'story-card';
+    card.innerHTML = `
+      <p class="story-card-number">${escapeHtml(story.id)}</p>
+      <p class="story-card-category">${escapeHtml(story.category)}</p>
+      <h3 class="story-card-company">${escapeHtml(story.company)}</h3>
+      <p class="story-card-metric">${escapeHtml(story.metric)}</p>
+      <p class="story-card-headline">${escapeHtml(story.headline)}</p>
+      <p class="story-card-preview">${escapeHtml(story.preview)}</p>
+      <button type="button" class="story-card-cta" data-story-id="${escapeHtml(story.id)}">
+        Scopri la storia <span aria-hidden="true">→</span>
+      </button>
+    `;
+    storiesGrid.appendChild(card);
+  });
+
+  /* Carousel controls: only needed with more than one story */
+  const storyCards = Array.from(storiesGrid.children);
+  const storiesDots = document.getElementById('storiesDots');
+  const storiesControls = document.querySelector('.stories-controls');
+  const storiesPrev = document.querySelector('.stories-prev');
+  const storiesNext = document.querySelector('.stories-next');
+
+  if (storyCards.length > 1 && storiesDots && storiesControls && storiesPrev && storiesNext) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const scrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+
+    storyCards.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'stories-dot';
+      dot.setAttribute('aria-label', `Vai alla storia ${index + 1} di ${storyCards.length}`);
+      dot.addEventListener('click', () => {
+        storyCards[index].scrollIntoView({ behavior: scrollBehavior, inline: 'start', block: 'nearest' });
+      });
+      storiesDots.appendChild(dot);
+    });
+
+    const dotEls = Array.from(storiesDots.children);
+
+    const updateCarouselState = () => {
+      const trackLeft = storiesGrid.getBoundingClientRect().left;
+      let activeIndex = 0;
+      let closestDistance = Infinity;
+
+      storyCards.forEach((card, index) => {
+        const distance = Math.abs(card.getBoundingClientRect().left - trackLeft);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          activeIndex = index;
+        }
+      });
+
+      dotEls.forEach((dot, index) => {
+        const isActive = index === activeIndex;
+        dot.classList.toggle('is-active', isActive);
+        if (isActive) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+
+      storiesPrev.disabled = activeIndex === 0;
+      storiesNext.disabled = activeIndex === storyCards.length - 1;
+    };
+
+    let scrollDebounce;
+    storiesGrid.addEventListener('scroll', () => {
+      window.clearTimeout(scrollDebounce);
+      scrollDebounce = window.setTimeout(updateCarouselState, 80);
+    }, { passive: true });
+
+    storiesGrid.addEventListener('scrollend', updateCarouselState, { passive: true });
+
+    storiesPrev.addEventListener('click', () => {
+      storiesGrid.scrollBy({ left: -storiesGrid.clientWidth, behavior: scrollBehavior });
+    });
+
+    storiesNext.addEventListener('click', () => {
+      storiesGrid.scrollBy({ left: storiesGrid.clientWidth, behavior: scrollBehavior });
+    });
+
+    window.addEventListener('resize', updateCarouselState, { passive: true });
+    updateCarouselState();
+  } else if (storiesControls) {
+    storiesControls.hidden = true;
+  }
+
+  const getFocusable = () =>
+    Array.from(
+      storyOverlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+    ).filter((el) => el.offsetParent !== null);
+
+  const openStory = (story, trigger) => {
+    lastFocusedElement = trigger || document.activeElement;
+
+    const metricLabel = story.metricLabel ? `<span>${escapeHtml(story.metricLabel)}</span>` : '';
+    const sourceHtml = story.source ? `<p class="story-source">${escapeHtml(story.source.label)}</p>` : '';
+
+    storyPanelContent.innerHTML = `
+      <p class="story-panel-eyebrow">${escapeHtml(story.category)} · Storia ${escapeHtml(story.id)}</p>
+      <h2 class="story-panel-title" id="storyPanelTitle">${escapeHtml(story.company)} — ${escapeHtml(story.headline)}</h2>
+      <p class="story-panel-metric">${escapeHtml(story.metric)}${metricLabel}</p>
+      <div class="story-panel-body">${story.body.map(renderBodyBlock).join('')}</div>
+      ${sourceHtml}
+    `;
+
+    storyOverlay.hidden = false;
+    document.body.classList.add('story-lock');
+    requestAnimationFrame(() => {
+      storyOverlay.classList.add('is-open');
+      storyOverlay.querySelector('.story-panel').focus();
+    });
+  };
+
+  const closeStory = () => {
+    if (storyOverlay.hidden) return;
+    storyOverlay.classList.remove('is-open');
+    document.body.classList.remove('story-lock');
+
+    window.setTimeout(() => {
+      storyOverlay.hidden = true;
+    }, 300);
+
+    if (lastFocusedElement) lastFocusedElement.focus();
+  };
+
+  storiesGrid.addEventListener('click', (event) => {
+    const trigger = event.target.closest('[data-story-id]');
+    if (!trigger) return;
+    const story = RESPIRU_STORIES.find((item) => item.id === trigger.dataset.storyId);
+    if (story) openStory(story, trigger);
+  });
+
+  storyOverlay.querySelectorAll('[data-story-close]').forEach((el) => {
+    el.addEventListener('click', closeStory);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (storyOverlay.hidden) return;
+
+    if (event.key === 'Escape') {
+      closeStory();
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+    const focusable = getFocusable();
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+}
+
+/* Respiru Founding Restaurants: contatore live + checkout */
+const fcRoot = document.querySelector('[data-fc-root]');
+
+if (fcRoot) {
+  const fcCountEl = document.querySelector('[data-fc-count]');
+  const fcThresholdEl = document.querySelector('[data-fc-threshold]');
+  const fcFillEl = document.querySelector('[data-fc-fill]');
+  const fcLabelEl = document.querySelector('[data-fc-phase-label]');
+  const fcNoteEl = document.querySelector('[data-fc-note]');
+  const fcCtaBtn = document.querySelector('[data-fc-cta]');
+  const fcCtaStatus = document.querySelector('[data-fc-cta-status]');
+
+  const FC_PHASES = {
+    raccolta: { label: 'In raccolta adesioni' },
+    confermato: { label: 'Progetto confermato' },
+    lancio_preparazione: { label: 'Lancio in preparazione' },
+    pronto: { label: 'Respiru è pronto' },
+  };
+
+  const renderFounderCount = (data) => {
+    const count = Number(data.count) || 0;
+    const threshold = Number(data.threshold) || 35;
+    const phase = FC_PHASES[data.phase] ? data.phase : 'raccolta';
+
+    if (fcCountEl) fcCountEl.textContent = count;
+    if (fcThresholdEl) fcThresholdEl.textContent = threshold;
+    if (fcLabelEl) fcLabelEl.textContent = FC_PHASES[phase].label;
+
+    const percent = Math.min(100, Math.round((count / threshold) * 100));
+    if (fcFillEl) {
+      requestAnimationFrame(() => {
+        fcFillEl.style.width = `${percent}%`;
+      });
+    }
+
+    let note;
+    if (phase === 'raccolta') {
+      const remaining = Math.max(0, threshold - count);
+      note = remaining > 0
+        ? `Mancano ${remaining} adesioni per confermare il progetto.`
+        : 'Stiamo confermando le ultime adesioni ricevute.';
+    } else if (phase === 'confermato') {
+      note = 'Soglia raggiunta: il progetto è confermato. Le adesioni restano aperte.';
+    } else if (phase === 'lancio_preparazione') {
+      note = 'Progetto confermato: stiamo sviluppando, testando e preparando le attivazioni.';
+    } else {
+      note = 'Respiru è pronto per l’attivazione dei Founding Restaurants.';
+    }
+    if (fcNoteEl) fcNoteEl.textContent = note;
+  };
+
+  fetch('/api/founders-count')
+    .then((r) => {
+      if (!r.ok) throw new Error('request failed');
+      return r.json();
+    })
+    .then(renderFounderCount)
+    .catch(() => {
+      if (fcLabelEl) fcLabelEl.textContent = 'Contatore non disponibile';
+      if (fcNoteEl) fcNoteEl.textContent = 'Non riusciamo a caricare il contatore in questo momento. Riprova tra poco.';
+    });
+
+  if (fcCtaBtn) {
+    fcCtaBtn.addEventListener('click', async () => {
+      fcCtaBtn.disabled = true;
+      const originalLabel = fcCtaBtn.textContent;
+      fcCtaBtn.textContent = 'Apertura checkout...';
+      if (fcCtaStatus) fcCtaStatus.textContent = '';
+
+      try {
+        const response = await fetch('/api/create-checkout-session', { method: 'POST' });
+        const data = await response.json();
+
+        if (!response.ok || !data.url) {
+          throw new Error(data.error || 'Errore di avvio checkout');
+        }
+
+        window.location.href = data.url;
+      } catch (error) {
+        fcCtaBtn.disabled = false;
+        fcCtaBtn.textContent = originalLabel;
+        if (fcCtaStatus) fcCtaStatus.textContent = 'Non siamo riusciti ad aprire il checkout. Riprova tra poco.';
+      }
+    });
+  }
+}
+

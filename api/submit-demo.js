@@ -20,6 +20,7 @@ module.exports = async (req, res) => {
   const submission = {
     type: 'demo-request',
     receivedAt: new Date().toISOString(),
+    nome: data.get('nome') || '',
     locale: data.get('locale') || '',
     email: data.get('email') || '',
     telefono: data.get('telefono') || '',
