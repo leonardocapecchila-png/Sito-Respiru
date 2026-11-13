@@ -1167,6 +1167,104 @@ h3 {
   --fc-cream: #F3E3D1;
 }
 
+.founders-standard-price {
+  max-width: 760px;
+  margin: 36px auto 0;
+  padding: 26px clamp(20px, 4vw, 36px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(253, 248, 240, 0.86);
+}
+
+.founders-standard-price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.founders-standard-price-main {
+  flex: 1 1 260px;
+}
+
+.founders-standard-price-amount {
+  color: var(--fc-blue);
+  font-size: clamp(2rem, 4.2vw, 2.6rem);
+  font-weight: 850;
+  line-height: 1;
+}
+
+.founders-standard-price-amount span {
+  margin-left: 4px;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.founders-standard-price-note {
+  margin: 8px 0 0;
+  max-width: 34ch;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.founders-standard-price-annual {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  gap: 2px;
+  text-align: right;
+}
+
+.founders-standard-price-strike {
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-decoration: line-through;
+}
+
+.founders-standard-price-prepay {
+  color: var(--fc-terracotta);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.founders-standard-price-prepay small {
+  margin-left: 4px;
+  color: var(--ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.founders-standard-price-equiv {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.founders-standard-setup {
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.founders-campaign-explainer {
+  max-width: 760px;
+  margin: 20px auto 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.founders-campaign-explainer strong {
+  color: var(--ink);
+}
+
 .founders-progress {
   max-width: 760px;
   margin: 40px auto 0;
@@ -1250,6 +1348,30 @@ h3 {
   margin-bottom: 18px;
 }
 
+.founders-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.founders-compare-col h3 {
+  margin-bottom: 14px;
+  font-size: 1rem;
+}
+
+.founders-compare-without h3 {
+  color: var(--muted);
+}
+
+.founders-compare-with {
+  padding-left: 18px;
+  border-left: 2px solid var(--fc-blue);
+}
+
+.founders-compare-with h3 {
+  color: var(--fc-blue);
+}
+
 .founders-benefits-list {
   display: grid;
   gap: 14px;
@@ -1260,20 +1382,33 @@ h3 {
 
 .founders-benefits-list li {
   position: relative;
-  padding-left: 30px;
+  padding-left: 26px;
   color: var(--ink);
+  font-size: 0.94rem;
   line-height: 1.5;
+}
+
+.founders-compare-without .founders-benefits-list li {
+  color: var(--muted);
 }
 
 .founders-benefits-list li::before {
   content: "";
   position: absolute;
-  left: 4px;
+  left: 2px;
   top: 7px;
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--fc-terracotta);
+}
+
+.founders-compare-without .founders-benefits-list li::before {
+  background: var(--muted);
+}
+
+.founders-compare-with .founders-benefits-list li::before {
+  background: var(--fc-blue);
 }
 
 .founders-checkout-card {
@@ -2071,6 +2206,17 @@ body.story-lock {
     max-width: 560px;
   }
 
+  .founders-compare {
+    grid-template-columns: 1fr;
+  }
+
+  .founders-compare-with {
+    padding-left: 0;
+    padding-top: 16px;
+    border-left: none;
+    border-top: 2px solid var(--fc-blue);
+  }
+
   .hero {
     padding-top: 100px;
     padding-bottom: 40px;
@@ -2163,6 +2309,19 @@ body.story-lock {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+  }
+
+  .founders-standard-price {
+    padding: 20px 18px;
+  }
+
+  .founders-standard-price-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .founders-standard-price-annual {
+    text-align: left;
   }
 
   .hero {
